@@ -4,34 +4,36 @@
                                                    android:layout_height="wrap_content"
                                                    xmlns:app="http://schemas.android.com/apk/res-auto">
     <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_margin="3dp"
+            android:gravity="center"
     >
         <TextView
                 android:id="@+id/hiring_item_list_id"
-                android:layout_width="20dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:gravity="center"
         />
 
         <TextView
                 android:id="@+id/hiring_item_id"
-                android:layout_width="20dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="3"
+                android:gravity="center"
         />
 
         <TextView
                 android:id="@+id/hiring_item_name"
-                android:layout_width="20dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="3"
         />
 
     </LinearLayout>

@@ -28,12 +28,21 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.*;
 
+/**
+ * The main activity for the hiring application
+ */
 public class MainActivity extends AppCompatActivity {
 
     private final static String hiringUrl = "https://fetch-hiring.s3.amazonaws.com/hiring.json";
     String filename;
     private ActivityScrollingBinding binding;
 
+    /**
+     * This method is called when the activity is first created.
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +88,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * This method sets up the download task for the hiring URL.
+     * It creates a download manager request, sets the title and description, and sets the destination
+     * for the downloaded file. It then enqueues the request and returns the download ID.
+     *
+     * @return long The download ID for the enqueued request.
+     */
     private long setDownTask() {
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(hiringUrl));
         request.setTitle("Download");
@@ -95,6 +111,15 @@ public class MainActivity extends AppCompatActivity {
         DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
         return manager.enqueue(request);
     }
+
+    /**
+     * This method sorts and cleans the data fetched from the hiring URL.
+     * It reads the downloaded file, parses the JSON data, and creates a list of HiringItem objects.
+     * It ignores any items with an empty or null name.
+     * The items are sorted first by their listId, and then by their id.
+     *
+     * @return ArrayList<HiringItem> The sorted and cleaned list of HiringItem objects.
+     */
     private ArrayList<HiringItem> sortCleanData() {
         JSONArray jsonArray;
         ArrayList<HiringItemList> sortData = new ArrayList<>();
@@ -144,9 +169,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void displayData() {
-
-    }
 
 }
 
